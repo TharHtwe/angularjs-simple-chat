@@ -1,0 +1,10 @@
+<div class="container" ng-app="chatApp" ng-controller="ChatController as chat">
+    <input type="text" placeholder="Enter your name" ng-model="chat.username">
+    <div>
+      <div ng-repeat="message in chat.messages track by $index">
+        <strong>{{ message.sender }}</strong>: {{ message.text }}
+      </div>
+    </div>
+    <input type="text" placeholder="Type your message" ng-model="chat.newMessage">
+    <button ng-click="chat.sendMessage()">Send</button>
+</div>
