@@ -10,7 +10,7 @@
         </div>
         <ul class="messages" scroll-bottom="chat.messages" directive-when-scrolled="chat.loadMoreMessages()">
             <li ng-repeat="message in chat.messages track by $index" class="message appeared" ng-class="{'right': chat.username == message.sender , 'left': chat.username != message.sender } ">
-                <div class="avatar"></div>
+                <div class="avatar"><img src="content/img/user2.png" width="60px"/></div>
                 <div class="text_wrapper">
                     <p ng-if="chat.username != message.sender" class="fst-italic fw-lighter mb-0" style="font-size: 12px;">{{ message.sender }}</p>
                     <div class="text">{{message.text}}</div>
