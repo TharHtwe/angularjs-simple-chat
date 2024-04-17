@@ -196,4 +196,42 @@
   .message_template {
     display: none;
   }
+
+  .message {
+    -webkit-transition: 1s;
+  }
+
+  .message.ng-enter {
+    transition:0.5s linear all;
+    opacity:0;
+  }
+  
+  /* The finishing CSS styles for the enter animation */
+  .message.ng-enter.ng-enter-active {
+    opacity:1;
+  }
+
+  .message.right.ng-enter {
+    animation: 0.3s slide-in-right cubic;
+  }
+  .message.left.ng-enter {
+    animation: 0.3s slide-in-left cubic;
+  }
+
+  @keyframes slide-in-right {
+    0% {
+        transform: translate(100%, 0%);
+    }
+    100% {
+       transform: translate(0%,0%)
+    }
+  }
+  @keyframes slide-in-left {
+    0% {
+      transform: translate(-100%,0%)
+    }
+    100% {
+      transform: translate(0%,0%)
+    }
+  }
   
