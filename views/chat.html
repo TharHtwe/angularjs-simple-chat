@@ -1,10 +1,37 @@
-<div class="container" ng-app="chatApp" ng-controller="ChatController as chat">
-    <input type="text" placeholder="Enter your name" ng-model="chat.username">
-    <div>
-      <div ng-repeat="message in chat.messages track by $index">
-        <strong>{{ message.sender }}</strong>: {{ message.text }}
-      </div>
+<div class="container-fluid" ng-app="chatApp" ng-controller="ChatController as chat">
+    <div class="chat_window">
+        <div class="top_menu">
+            <div class="buttons">
+                <div class="button close"></div>
+                <div class="button minimize"></div>
+                <div class="button maximize"></div>
+            </div>
+            <div class="title">Chat</div>
+        </div>
+        <ul class="messages">
+            <li ng-repeat="message in chat.messages track by $index" class="message appeared" ng-class="{'right': chat.username == message.sender , 'left': chat.username != message.sender } ">
+                <div class="avatar"></div>
+                <div class="text_wrapper">
+                    <div class="text">{{message.text}}<span ng-if="chat.username != message.sender" class="fst-italic fw-lighter"> by {{ message.sender }}</span></div>
+                </div>
+            </li>
+        </ul>
+        <div class="bottom_wrapper clearfix">
+            <div class="message_input_wrapper">
+                <input class="message_input" ng-model="chat.newMessage" placeholder="Type your message here..." />
+            </div>
+            <div class="send_message">
+                <div class="icon"></div>
+                <div class="text" ng-click="chat.sendMessage()">Send</div>
+            </div>
+        </div>
     </div>
-    <input type="text" placeholder="Type your message" ng-model="chat.newMessage">
-    <button ng-click="chat.sendMessage()">Send</button>
+    <div class="message_template">
+        <li class="message">
+            <div class="avatar"></div>
+            <div class="text_wrapper">
+                <div class="text"></div>
+            </div>
+        </li>
+    </div>
 </div>
